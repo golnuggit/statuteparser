@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/statute.schema.json",
+  "type": "object",
+  "required": ["id", "type", "source", "nodes"],
+  "properties": {
+    "id": {"type": "string"},
+    "type": {"enum": ["statute", "regulation"]},
+    "source": {
+      "type": "object",
+      "required": ["work", "title", "section"],
+      "properties": {
+        "work": {"enum": ["USC", "CFR"]},
+        "title": {"type": ["integer", "string"]},
+        "section": {"type": "string"},
+        "publication": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "breadcrumbs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["level", "n"],
+        "properties": {
+          "level": {"type": "string"},
+          "n": {"type": ["string", "integer"]}
+        }
+      }
+    },
+    "heading": {"type": ["string", "null"]},
+    "nodes": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/node"},
+      "minItems": 1
+    },
+    "links": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/link"}
+    },
+    "spans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["node", "start", "end"],
+        "properties": {
+          "node": {"type": "string"},
+          "start": {"type": "integer", "minimum": 0},
+          "end": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "definitions": {
+    "node": {
+      "type": "object",
+      "required": ["id", "label", "level", "text", "children"],
+      "properties": {
+        "id": {"type": "string"},
+        "label": {"type": "string"},
+        "level": {
+          "enum": [
+            "section",
+            "subsection",
+            "paragraph",
+            "subparagraph",
+            "clause",
+            "subclause",
+            "item",
+            "subitem"
+          ]
+        },
+        "heading": {"type": ["string", "null"]},
+        "text": {"type": "string"},
+        "children": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/node"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "link": {
+      "type": "object",
+      "required": ["source", "target", "relation", "scope"],
+      "properties": {
+        "source": {"type": "string"},
+        "target": {"type": "string"},
+        "ref_text": {"type": ["string", "null"]},
+        "relation": {
+          "enum": [
+            "for-purposes-of",
+            "subject-to",
+            "exception-to",
+            "definition-of",
+            "see-also",
+            "notwithstanding"
+          ]
+        },
+        "scope": {
+          "enum": [
+            "intra-section",
+            "intra-part",
+            "inter-section",
+            "inter-title"
+          ]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}
