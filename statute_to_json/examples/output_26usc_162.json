@@ -1,0 +1,82 @@
+{
+  "id": "usc:26:162",
+  "type": "statute",
+  "source": {
+    "work": "USC",
+    "title": 26,
+    "section": "162"
+  },
+  "heading": "Business expenses.",
+  "nodes": [
+    {
+      "id": "usc:26:162",
+      "label": "",
+      "level": "section",
+      "heading": "Business expenses.",
+      "text": "",
+      "children": [
+        {
+          "id": "usc:26:162(a)",
+          "label": "(a)",
+          "level": "subsection",
+          "heading": "In general",
+          "text": "Business expenses deductible from gross income include the ordinary and necessary expenses paid or incurred during the taxable year in carrying on any trade or business.",
+          "children": []
+        },
+        {
+          "id": "usc:26:162(b)",
+          "label": "(b)",
+          "level": "subsection",
+          "heading": "Exceptions",
+          "text": "For purposes of paragraph (a) [[usc:26:162(a)]], the following apply:",
+          "children": [
+            {
+              "id": "usc:26:162(b)(1)",
+              "label": "(1)",
+              "level": "paragraph",
+              "heading": null,
+              "text": "Subject to section 274 [[usc:26:274]], no deduction shall be allowed for certain entertainment expenses.",
+              "children": []
+            },
+            {
+              "id": "usc:26:162(b)(2)",
+              "label": "(2)",
+              "level": "paragraph",
+              "heading": null,
+              "text": "Except as provided in paragraph (a)(1) [[usc:26:162(a)(1)]], additional amounts may be allowed when otherwise authorized.",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "source": "usc:26:162(b)",
+      "target": "usc:26:162(a)",
+      "relation": "for-purposes-of",
+      "scope": "intra-section",
+      "ref_text": "paragraph (a)",
+      "confidence": 0.95
+    },
+    {
+      "source": "usc:26:162(b)(1)",
+      "target": "usc:26:274",
+      "relation": "subject-to",
+      "scope": "inter-section",
+      "ref_text": "section 274",
+      "confidence": 0.95
+    },
+    {
+      "source": "usc:26:162(b)(2)",
+      "target": "usc:26:162(a)(1)",
+      "relation": "exception-to",
+      "scope": "intra-section",
+      "ref_text": "paragraph (a)(1)",
+      "confidence": 0.95
+    }
+  ],
+  "spans": [],
+  "meta": {}
+}
